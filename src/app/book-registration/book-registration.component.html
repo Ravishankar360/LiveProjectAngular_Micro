@@ -1,0 +1,86 @@
+<style>
+  body {
+    background-color: lightblue;
+  }
+  </style>
+  
+<div>
+  <p>
+    <mat-toolbar color="primary">
+    <img src = "/assets/image/digital.jpg" alt="" style="height:60px; width:100px" class="center"> &nbsp;&nbsp;
+    <span> Digital Book App</span>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+     <img src = "/assets/image/login.jpg" alt="" style="height:50px; width:80px" class="margin-left">
+     <button mat-raised-button color="primary" (click)="signUp()">Logout</button> 
+    
+  </mat-toolbar>
+</p>
+
+<div>
+  <h1 style="COLOR:rgb(128, 0, 53);"> Book Registration Page</h1>
+    <Form [formGroup]="bookRegistrationForm">
+        <div class="body">
+       <!-- <mat-label>Book-Registration</mat-label> -->
+        <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Book Title</mat-label>
+            <input matInput type="text" formControlName="bookTitle">
+          </mat-form-field> &nbsp;
+
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Category</mat-label>
+            <input matInput type="text" formControlName="category">
+          </mat-form-field>  &nbsp;
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Price</mat-label>
+            <input matInput type="text" formControlName="price">
+          </mat-form-field>  &nbsp;
+          <!-- <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Image</mat-label>
+           <input matInput type="text" formControlName="imagePath"> 
+          
+            </mat-form-field> &nbsp;-->
+            
+           <!-- <input matInput type="file" formControlName="imagePath" (change)="onFilechange($event)"> -->
+            <!-- <input type="file" class="file-upload" onchange="console.log(event.target.files)" formControlName="imagePath"> -->
+          
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Publisher Name</mat-label>
+            <input matInput type="text" formControlName="publisherName">
+          </mat-form-field> &nbsp;
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Book AuthorName</mat-label>
+            <input matInput type="text" formControlName="bookAuthorName">
+          </mat-form-field> &nbsp;
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-select placeholder="Book Active" formControlName="isActive">
+                <mat-option value="Yes">Yes</mat-option>
+                <mat-option value="No">No</mat-option>
+            </mat-select>
+          </mat-form-field> &nbsp;
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Book Content</mat-label>
+            <textarea matInput type="text" formControlName="bookContent"></textarea>
+          </mat-form-field>
+
+          <div>
+            <label>Image path</label>
+               <input type="file" (change)="onFilechange($event)" formControlName="imagePath"/>
+          </div>
+          
+
+          <div mat-dialog-action [align]="'end'">
+            <button mat-raised-button color="provided" mat-raised-button color="primary" (click)="getBookList()">Back</button>
+            <button style="margin-left:8px;" mat-raised-button color="primary" (click)="addBookRegisteredWithoutFile()">Save</button>
+          </div>
+        </div>
+    </Form>
+</div>
+

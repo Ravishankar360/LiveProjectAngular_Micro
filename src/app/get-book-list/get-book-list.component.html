@@ -1,0 +1,64 @@
+<div>
+  <p>
+    <mat-toolbar color="primary">
+    <img src = "/assets/image/digital.jpg" alt="" style="height:60px; width:100px" class="center"> &nbsp;&nbsp;
+    <span> Digital Book App</span>
+    <li>
+      <button mat-raised-button color="warn" (click)="openDialog()">Search Book</button>
+    </li>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+     <img src = "/assets/image/login.jpg" alt="" style="height:50px; width:80px" class="margin-left">
+     &nbsp;<button mat-raised-button color="primary" (click)="signUp()">Logout</button> 
+  </mat-toolbar>
+</p>
+
+<div class="container">
+    <h1 style="COLOR:RED;"> Book Information List </h1>
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Book Id</th>
+        <th scope="col">Book Title</th>
+        <th scope="col">Content</th>
+        <th scope="col">Category</th>
+        <th scope="col">AuthorName</th>
+        <th scope="col">PublisherName</th>
+        <th scope="col">ImagePath</th>
+        <th scope="col">Price</th>
+        <th scope="col">Book Active</th>
+   
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngIf="books.length==0">
+        <td colspan="7" style="text-align: center"><h2>There are no Book yet</h2></td>
+      </tr>
+      <tr *ngFor="let book of books">
+        <td >{{book.bid}}</td>
+        <td>{{book.bookTitle}}</td>
+        <td>{{book.bookContent}}</td>
+        <td >{{book.category}}</td>
+        <td>{{book.bookAuthorName}}</td>
+        <td>{{book.publisherName}}</td>
+        <td >{{book.imagePath}}</td>
+        <td>{{book.price}}</td>
+        <td>{{book.isActive}}</td>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="goToUpdateBook(book.bid)">Edit</button>&nbsp;
+           <button type="button" class="btn btn-secondary" (click)="goToViewBookDetails(book.bid)">View</button>&nbsp;
+          <button type="button" class="btn btn-danger" (click)="deleteBookById(book.bid)">Delete</button>
+        </td>
+      </tr>
+    
+      </tbody>
+    </table>
+      <button type="button" class="btn btn-success" (click)="addBookRegistered()">Add Book</button>
+    </div>

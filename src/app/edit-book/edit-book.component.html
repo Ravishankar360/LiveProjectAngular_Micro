@@ -1,0 +1,70 @@
+<div>
+    <p>
+      <mat-toolbar color="primary">
+      <img src = "/assets/image/digital.jpg" alt="" style="height:60px; width:100px" class="center"> &nbsp;&nbsp;
+      <span> Digital Book App</span>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     
+      <img src = "/assets/image/login.jpg" alt="" style="height:50px; width:80px" class="margin-left">
+      &nbsp;<button mat-raised-button color="primary" (click)="signUp()">Logout</button> 
+      
+    </mat-toolbar>
+  </p>
+  
+  <div class="body">
+    <h1 style="COLOR:rgb(128, 0, 53);"> Update Book Registration Page</h1>
+      <Form [formGroup]="updateRegistrationForm">
+        <div>
+         <!-- <mat-label>Book-Registration</mat-label> -->
+          <mat-form-field class="example-form-field" appearance="fill">
+              <mat-label>Book Title</mat-label>
+              <input matInput type="text" value="{{book.bookTitle}}" formControlName="bookTitle">
+            </mat-form-field> &nbsp;
+  
+            <mat-form-field class="example-form-field" appearance="fill">
+              <mat-label>Category</mat-label>
+              <input matInput type="text" value="{{book.category}}" formControlName="category" >
+            </mat-form-field>&nbsp;
+            <mat-form-field class="example-form-field" appearance="fill">
+              <mat-label>Price</mat-label>
+              <input matInput type="text" value="{{book.price}}" formControlName="price" >
+            </mat-form-field>&nbsp;
+            <mat-form-field class="example-form-field" appearance="fill" >
+              <mat-label>Image</mat-label>
+              <input matInput type="text" value="{{book.imagePath}}" formControlName="imagePath" >
+            </mat-form-field>&nbsp;
+            <mat-form-field class="example-form-field" appearance="fill" >
+              <mat-label>Publisher Name</mat-label>
+              <input matInput type="text" value="{{book.publisherName}}" formControlName="publisherName" >
+            </mat-form-field>&nbsp;
+            <mat-form-field class="example-form-field" appearance="fill">
+              <mat-label>AuthorName</mat-label>
+              <input matInput type="text" value="{{book.bookAuthorName}}" formControlName="bookAuthorName" >
+            </mat-form-field>&nbsp;
+            <mat-form-field class="example-form-field" appearance="fill">
+              <mat-select placeholder="Book Active" value="{{book.isActive}}" formControlName="isActive" >
+                  <mat-option value="Yes">Yes</mat-option>
+                  <mat-option value="No">No</mat-option>
+              </mat-select>
+            </mat-form-field>&nbsp;
+            <mat-form-field class="example-form-field" appearance="fill">
+              <mat-label>Content</mat-label>
+              <textarea matInput type="text" value="{{book.bookContent}}" formControlName="bookContent" ></textarea>
+            </mat-form-field>
+            
+  
+            <div mat-dialog-action [align]="'end'">
+              <button mat-raised-button color="provided" mat-raised-button color="primary" (click)="getBookList()">Back</button>
+              <button style="margin-left:8px;" mat-raised-button color="primary" (click)="updateBookRegistered()">Update</button>
+            </div>
+          </div>  
+      </Form>
+  </div>
+  
