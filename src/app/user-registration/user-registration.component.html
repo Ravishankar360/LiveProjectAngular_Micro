@@ -81,8 +81,10 @@
             <input matInput type="text" formControlName="postalCode">
           </mat-form-field>&nbsp;
           <mat-form-field class="example-form-field" appearance="fill">
-            <mat-label>User Active</mat-label>
-            <input matInput type="number" formControlName="isActive">
+            <mat-select placeholder="User Active" formControlName="isActive">
+                <mat-option value="1">Yes</mat-option>
+                <mat-option value="0">No</mat-option>
+            </mat-select>
           </mat-form-field>&nbsp;
           <mat-form-field appearance="outline">
             <mat-label>Role Type</mat-label>

@@ -16,6 +16,7 @@ export class BookRegistrationComponent implements OnInit {
 uploadProgress!:number;  
 uploadSub!: '';
 selectedFiles!: FileList;  
+  imagePath: string | ArrayBuffer | null | undefined;
 
   constructor(private http:HttpClient,private formBuilder:FormBuilder,private userloginService:UserLoginServiceService, private router:Router) { }
 
@@ -73,11 +74,18 @@ onFilechange(event: any) {
   //alert(event.target.files[0]);
   console.log(event.target.files[0])
   this.file = event.target.files[0]
+  let reader = new FileReader();
+  reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (event2) => {
+      this.imagePath = reader.result;
+    };
+    
   if (this.file.type.match('image.*')) {
     this.selectedFiles = event.target.files;
   } else {
     alert('invalid format!');
   }
+
 }
 
 }
