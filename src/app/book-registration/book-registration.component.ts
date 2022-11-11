@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormsModule, FormBuilder, FormControl } from '@a
 import { UserLoginServiceService } from '../user-login-service.service';
 import { Router } from '@angular/router';
 import { HttpClient, HttpEventType } from '@angular/common/http';
+import { Book } from '../book';
 
 @Component({
   selector: 'app-book-registration',
@@ -16,9 +17,15 @@ export class BookRegistrationComponent implements OnInit {
 uploadProgress!:number;  
 uploadSub!: '';
 selectedFiles!: FileList;  
+selectedFile :any;
   imagePath: string | ArrayBuffer | null | undefined;
+  book = new Book();
+  loggedIn: any;
+  user: any;
 
-  constructor(private http:HttpClient,private formBuilder:FormBuilder,private userloginService:UserLoginServiceService, private router:Router) { }
+  constructor(private http:HttpClient,private formBuilder:FormBuilder,
+    private httpClient: HttpClient,private userloginService:UserLoginServiceService, 
+    private router:Router) { }
 
   ngOnInit(): void {
     // const formData = new FormData();
@@ -30,6 +37,9 @@ selectedFiles!: FileList;
     // formData.append('bookAuthorName',this.bookRegistrationForm.value.bookAuthorName);
     // formData.append('isActive',this.bookRegistrationForm.value.isActive);
     // formData.append('bookContent',this.bookRegistrationForm.value.bookContent);
+
+    this.loggedIn = this.userloginService.isLoggedIn();
+    this.user = localStorage.getItem("user");
 
     this.bookRegistrationForm= this.formBuilder.group({
       bookTitle:['',Validators.required],
@@ -87,5 +97,47 @@ onFilechange(event: any) {
   }
 
 }
+public onFileChanged(event:any) {
+  console.log(event);
+  this.selectedFiles = event.target.files[0];
+
+  // Below part is used to display the selected image
+  let reader = new FileReader();
+  reader.readAsDataURL(event.target.files[0]);
+  reader.onload = (event2) => {
+    this.imagePath = reader.result;
+  };
+}
+
+saveBook() {
+  // this.book.createdBy =this.user;
+   const uploadData = new FormData();
+   console.log("Checking book content"+this.book);
+   uploadData.append('imagePath', this.selectedFile, this.selectedFile.name);
+   this.selectedFile.imageName = this.selectedFile.name;
+   this.httpClient.post('http://localhost:8083/book/upload/logo', uploadData, { observe: 'response' })
+     .subscribe((response) => {
+       if (response.status === 200) {
+         this.userloginService.addBookRegisteredWithoutFile(this.book).subscribe(
+           (book) => {
+             this.router.navigate(['home']);
+           }
+         );
+         alert("Data added successfully");
+         console.log('Image uploaded successfully');
+       } else {
+         console.log('Image not uploaded successfully');
+         alert("Book addition failed");
+       }
+     }
+     );
+
+   //}
+   // else{
+   //   this.addBookSubmit();
+
+   // }
+ }
+ 
 
 }

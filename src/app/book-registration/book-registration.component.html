@@ -73,12 +73,14 @@
           <div>
             <label>Image path</label>
                <input type="file" (change)="onFilechange($event)" formControlName="imagePath"/>
+               <img [src]="imagePath" height="50" width="50" *ngIf="imagePath">
           </div>
           
 
           <div mat-dialog-action [align]="'end'">
             <button mat-raised-button color="provided" mat-raised-button color="primary" (click)="getBookList()">Back</button>
             <button style="margin-left:8px;" mat-raised-button color="primary" (click)="addBookRegisteredWithoutFile()">Save</button>
+            <!-- <button style="margin-left:8px;" mat-raised-button color="primary" (click)="saveBook()">Save</button> -->
           </div>
         </div>
     </Form>

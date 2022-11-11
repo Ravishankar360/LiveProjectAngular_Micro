@@ -68,4 +68,24 @@ export class UserLoginServiceService {
   
     return this.httpClient.post("http://localhost:8082/book/searchbook",book);
   }
+
+  createBook(book: Book): Observable<any> {
+    console.log(book);
+    return this.httpClient.post<any>("http://localhost:8083/user/create/book", book);
+  }
+
+  createBookWithImage(book: Book): Observable<any> {
+    console.log(book);
+    return this.httpClient.post<any>("http://localhost:8083/book/addBookWithImage", book);
+  }
+
+  isLoggedIn(){
+    let user =  localStorage.getItem("user");
+    //alert(user);
+    if(user==null || user=='' ||user==undefined){
+      return false;
+    }else{
+      return true;
+    }
+   }
 }

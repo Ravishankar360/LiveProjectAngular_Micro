@@ -10,4 +10,6 @@ export class Book {
 	createdAt!:Date;
 	updatedAt!:Date;
 	isActive!:String; 
+	imageName!: string;
+	imageType!: string;
 }
